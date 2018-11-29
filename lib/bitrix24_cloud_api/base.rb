@@ -2,12 +2,11 @@ module Bitrix24CloudApi
   require 'forwardable'
 
   class Base
-    require "httparty"
+    require 'httparty'
     extend Forwardable
     def_delegators 'self.class', :resource_url, :to_query
 
     class << self
-
       def to_query(params)
         params.to_a.map { |x| "#{CGI.escape(x[0].to_s)}=#{CGI.escape(x[1].to_s)}" }.join("&")
       end
@@ -19,7 +18,7 @@ module Bitrix24CloudApi
       end
 
       def resource_path(exact_name = nil)
-        exact_name || name.gsub("Bitrix24CloudApi::", "").gsub("::", ".").downcase
+        exact_name || name.gsub('Bitrix24CloudApi::', '').gsub('::', '.').downcase
       end
     end
   end
