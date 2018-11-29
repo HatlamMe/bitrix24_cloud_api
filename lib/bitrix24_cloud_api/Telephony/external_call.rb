@@ -11,7 +11,7 @@ module Bitrix24CloudApi
 
     # Bitrix24 telephony external call API
     class ExternalCall < Bitrix24CloudApi::Telephony
-      %i[registe finish].each do |action|
+      %i[register finish show].each do |action|
         define_singleton_method(action) do |client, query = {}|
           client.make_get_request(resource_url(client, action), query)
         end
